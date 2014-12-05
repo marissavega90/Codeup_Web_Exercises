@@ -35,7 +35,80 @@
             <p>
                 <textarea id="email_body" name="email_body" placeholder="Compose e-mail"></textarea>
             </p>
+            <p>
+                <input type="checkbox" id="saveTo" name="saveTo" value="yes" checked>
+                <label for="saveTo">Save a copy to <strong><em>sent</em></strong> folder</label>
+            </p>
                 <input type="submit" value="Send">
+        </form>
+        <form>
+            <p>
+                <h2>Multiple Choice Test</h2>
+            </p>
 
+            <p>Who wrote "Great Expectations?"
+            <br>
+                <label>
+                    <input type="radio" id="q1a" name="q1" value="gogol">
+                    Nikolai Gogol
+                    <br>
+                </label>
+                <label>
+                    <input type="radio" id="q1b" name="q1" value="dickens">
+                    Charles Dickens
+                    <br>
+                </label>
+                <label>
+                    <input type="radio" id="q1c" name="q1" value="austen">
+                    Jane Austen
+                    <br>
+                </label>
+                <label>
+                    <input type="radio" id="q1d" name="q1" value="tolstoy">
+                    Leo Tolstoy
+                    <br>
+                </label>
+            </p>
+            <p>Who wrote "The Catcher in the Rye?"
+            <br>
+                <label>
+                    <input type="radio" id="q2a" name="q2" value="fitzgerald">
+                    F. Scott Fitzgerald
+                    <br>
+                </label>
+                <label>
+                    <input type="radio" id="q2b" name="q2" value="hemmingway">
+                    Ernest Hemmingway
+                    <br>
+                </label>
+                <label>
+                    <input type="radio" id="q2c" name="q2" value="salinger">
+                    J. D. Salinger
+                    <br>
+                </label>
+                <label>
+                    <input type="radio" id="q2d" name="q2" value="lee">
+                    Harper Lee
+                    <br>
+                </label>
+            </p>
+            <input type="submit" value="Submit answers for judgement">
+        </form>
+        <form>
+            <p>What books do you like to read?
+            <br>
+                <label><input type="checkbox" id="book1" name="book[]" value="sci_fi">Science Fiction</label>
+                <br>
+                <label><input type="checkbox" id="book2" name="book[]" value="classic">Classics</label>
+                <br>
+                <label><input type="checkbox" id="book3" name="book[]" value="fiction">Fiction</label>
+                <br>
+                <label><input type="checkbox" id="book4" name="book[]" value="non_fiction">Non-fiction</label>
+                <br>
+                <label><input type="checkbox" id="book4" name="book[]" value="everything">Everything!</label>
+                <br>
+            </p>
+            <input type="submit" value="Submit answers for judgement">
+        </form>
     </body>
 </html>

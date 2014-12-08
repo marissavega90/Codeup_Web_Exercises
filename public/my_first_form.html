@@ -5,7 +5,7 @@
     </head>
     <body>
     <h2>User Login</h2>
-        <form method="POST" action="http://requestb.in/12r9xmj1">
+        <form method="POST" action="http://requestb.in/1jlu0js1">
             <p>
                 <label for="username">Username</label>
                 <input id="username" name="username" type="text" placeholder="Enter your username">
@@ -93,8 +93,6 @@
                 </label>
             </p>
             <input type="submit" value="Submit answers for judgement">
-        </form>
-        <form>
             <p>What books do you like to read?
             <br>
                 <label><input type="checkbox" id="book1" name="book[]" value="sci_fi">Science Fiction</label>
@@ -109,6 +107,26 @@
                 <br>
             </p>
             <input type="submit" value="Submit answers for judgement">
+            <p>
+                <label for"philipbook">Who wrote "Flow My Tears the Policeman Said"? </label>
+                <select id="philipbook" name="philipbook">
+                    <option value="1">George Orwell</option>
+                    <option value="2">Aldous Huxley</option>
+                    <option value="3">Philip K. Dick</option>
+                    <option value="4">Orson Scott Card</option>
+                </select>
+            </p>
+            <input type="submit" value="Submit">
+        </form>
+        <form>
+            <p>
+                <label for="test">Select Testing</label>
+                <select id="test" name="test">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </p>
+            <input type="submit" value="Submit">
         </form>
     </body>
 </html>

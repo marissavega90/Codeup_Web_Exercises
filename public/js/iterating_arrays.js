@@ -20,6 +20,26 @@ var names = ['Isaac', 'Cory', 'Jill', 'Thomas'];
 
 // console.log('The fourth name is ' + names[3]);
 
+function nameLoop(name, index, array) {
+    console.log('The name at index ' + index + ' is: ' + name);
+}
+
+names.forEach(nameLoop);
+
+console.log('-----------------------------')
+
+for (var i = 0; i < names.length; i++) {
+    console.log('The name at index ' + i + ' is: ' + names[i]);
+}
+
+console.log('-----------------------------')
+
 names.forEach(function (name, index, array) {
     console.log('The name at index ' + index + ' is: ' + name);
 });
+
+console.log('-----------------------------')
+
+for (index in names) {
+    console.log('The name at index ' + index + ' is: ' + names[index]);
+}

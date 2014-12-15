@@ -21,5 +21,5 @@ var names = ['Isaac', 'Cory', 'Jill', 'Thomas'];
 // console.log('The fourth name is ' + names[3]);
 
 names.forEach(function (name, index, array) {
-    console.log('The name at ' + index + ' is: ' + name);
+    console.log('The name at index ' + index + ' is: ' + name);
 });

@@ -23,34 +23,52 @@
         culpa qui officia deserunt mollit anim id est laborum.
     </p>
 
+    <button id="mainHeaderButton">Reset Header</button>
+    <button id="subHeaderButton">Change Sub-Header Color</button>
+    <button id="listItemsButton">Change List Item Colors</button>
+    <button id="subParagraphButton">Change Sub Paragraph</button>
+
     <script>
 
         // todo: get the main header element by id
         var mainHeader = document.getElementById('main-header');
 
         // todo: set inner html of mainHeader to "JavaScript is Cool"
-        mainHeader.innerHTML = 'JavaScript is Cool';
+        var mainHeaderListener = function (event) {
+            mainHeader.innerHTML = 'JavaScript is Cool';
+        }
+
+        document.getElementById('mainHeaderButton').addEventListener('click', mainHeaderListener, false);
+        
 
         // todo: get the sub header element by id
         var subHeader = document.getElementById('sub-header');
 
         // todo: set the text color of subHeader to blue
-        subHeader.style['color'] = 'blue';
+        var subHeaderListener = function (event) {
+            subHeader.style['color'] = 'blue';
+        }
+
+        document.getElementById('subHeaderButton').addEventListener('click', subHeaderListener, false);
 
         // todo: get all list items
         var listItems = document.getElementsByTagName('li');
 
         // todo: set text color on every other list item to grey
-        for (i = 0; i < listItems.length; i++) {
+        var listItemsListener = function (event) {
+            for (i = 0; i < listItems.length; i++) {
 
-            if (i % 2 == 0) {
-                listItems[i].style['color'] = 'grey';
+                if (i % 2 == 0) {
+                    listItems[i].style['color'] = 'grey';
+                }
+                // todo: set text color of li with dbid = 1 to blue
+                if (listItems[i].attributes['data-dbid'].value == '1') {
+                    listItems[i].style['color'] = 'blue';
+               }
             }
-            // todo: set text color of li with dbid = 1 to blue
-            if (listItems[i].attributes['data-dbid'].value == '1') {
-                listItems[i].style['color'] = 'blue';
-           }
         }
+
+        document.getElementById('listItemsButton').addEventListener('click', listItemsListener, false);
 
         
 
@@ -58,8 +76,12 @@
         var subParagraphs = document.getElementsByClassName('sub-paragraph');
 
         // todo: change the text in the first sub paragraph to "Mission Accomplished!"
-        subParagraphs[0].innerText = 'Mission Accomplished!';
+        var subParagraphListener = function (event) {
+            subParagraphs[0].innerText = 'Mission Accomplished!';
+        }
 
+        document.getElementById('subParagraphButton').addEventListener('click', subParagraphListener, false);
+        
     </script>
 
 </body>

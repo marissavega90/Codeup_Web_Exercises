@@ -4,7 +4,7 @@
             <meta charset="utf-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>Bootstrap 101 Template</title>
+            <title>Portfolio</title>
 
             <!-- Font-Awesome -->
             <link rel="stylesheet" href="/font-awesome/css/font-awesome.css">
@@ -45,6 +45,27 @@
             opacity: 1.0;
             filter: alpha(opacity=100); /* For IE8 and earlier */
         }
+
+        .rotate{
+            -webkit-transition-duration: 1.5s;
+            -moz-transition-duration: 1.5s;
+            -o-transition-duration: 1.5s;
+            transition-duration: 1.5s;
+             
+            -webkit-transition-property: -webkit-transform;
+            -moz-transition-property: -moz-transform;
+            -o-transition-property: -o-transform;
+            transition-property: transform;
+             
+            overflow:hidden;
+         
+            }  
+     
+        .rotate:hover  {
+            -webkit-transform:rotate(360deg);
+            -moz-transform:rotate(360deg);
+            -o-transform:rotate(360deg);
+        }  
 
 
         </style>
@@ -90,7 +111,7 @@
             <div class="row">
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
-                <a href="/css_box_model.html"><img class="thumby" src="/img/cssboxmodel.png" alt="..."></a>
+                <a href="/css_box_model.html"><img class="thumby rotate" src="/img/cssboxmodel.png" alt="..."></a>
                 <div class="caption">
                     <p align="center"><a href="/css_box_model.html" class="btn btn-default" role="button">CSS Box Model Page</a></p>
                 </div>
@@ -98,7 +119,7 @@
         </div>
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
-                <a href="/css_positioning.html"><img class="thumby" src="/img/csspositioning.png" alt="..."></a>
+                <a href="/css_positioning.html"><img class="thumby rotate" src="/img/csspositioning.png" alt="..."></a>
                 <div class="caption">
                     <p align="center"><a href="/css_positioning.html" class="btn btn-default" role="button">CSS Positioning Page</a></p>
                 </div>
@@ -106,7 +127,7 @@
         </div>
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
-                <a href="/hello_world.html"><img class="thumby" src="/img/helloworld.png" alt="..."></a>
+                <a href="/hello_world.html"><img class="thumby rotate" src="/img/helloworld.png" alt="..."></a>
                 <div class="caption">
                     <p align="center"><a href="/hello_world.html" class="btn btn-default" role="button">My First Webpage</a></p>
                 </div>

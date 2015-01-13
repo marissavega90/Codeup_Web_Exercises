@@ -34,7 +34,7 @@
         var mainHeader = document.getElementById('main-header');
 
         // todo: set inner html of mainHeader to "JavaScript is Cool"
-        var mainHeaderListener = function (event) {
+        var mainHeaderListener = function () {
             mainHeader.innerHTML = 'JavaScript is Cool';
         }
 
@@ -45,7 +45,7 @@
         var subHeader = document.getElementById('sub-header');
 
         // todo: set the text color of subHeader to blue
-        var subHeaderListener = function (event) {
+        var subHeaderListener = function () {
             subHeader.style['color'] = 'blue';
         }
 
@@ -55,7 +55,7 @@
         var listItems = document.getElementsByTagName('li');
 
         // todo: set text color on every other list item to grey
-        var listItemsListener = function (event) {
+        var listItemsListener = function () {
             for (i = 0; i < listItems.length; i++) {
 
                 if (i % 2 == 0) {
@@ -76,7 +76,7 @@
         var subParagraphs = document.getElementsByClassName('sub-paragraph');
 
         // todo: change the text in the first sub paragraph to "Mission Accomplished!"
-        var subParagraphListener = function (event) {
+        var subParagraphListener = function () {
             subParagraphs[0].innerText = 'Mission Accomplished!';
         }
 

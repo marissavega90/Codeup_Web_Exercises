@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>National Parks FAQ</title>
+		<style type="text/css">
+			.invisible {
+				display: none;
+			}
+			dt {
+				color: blue;
+			}
+			li {
+				font-style: normal;
+			}
+		</style>
+		<!--<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>-->
+	</head>
+	<body>
+		<h1>10 Facts about Grand Teton</h1>
+			<dl>
+
+				<dt>Fact 1</dt>
+					<dd class="invisible">Total size: 310,000 acres (485 square miles)</dd>
+				<dt>Fact 2</dt>
+					<dd class="invisible">Originally Founded: February 26, 1929</dd>
+				<dt>Fact 3</dt>
+					<dd class="invisible">17 species of carnivores (including grizzly bears and wolves)</dd>
+				<dt>Fact 4</dt>
+					<dd class="invisible">Youngest Mountain Range in the Rockies</dd>
+				<dt>Fact 5</dt>
+					<dd class="invisible">The Snake River is the largest river in Grand Teton Park.</dd>
+			</dl>
+
+		<h3 >Zion National Park</h3>
+			<ul class='zion' >
+				<li>Zion is a Hebrew word that means ‘a place of peace and relaxation.'</li>
+				<li>Approximately 2.5 million people visit the park each year.</li>
+				<li>The highest elevation in the park is at Kolob Canyon at 8,726 feet </li>
+				<li>The California Condor, a bird considered one of the most endangered species, can be found in the park.</li>
+			</ul>
+		<h3 >The Grand Canyon</h3>
+			<ul class='grandCanyon'>
+				<li>The Grand Canyon was one of our very first national parks. </li>
+				<li>There aren’t any dinosaur fossils at the Grand Canyon</li>
+				<li>The Grand Canyon is the second largest canyon in the world</li>
+				<li>TThe widest point of the Grand Canyon is farther than the average American’s commute to work.</li>
+			</ul>
+			
+			<script src="/js/jquery.min.js"></script>
+			<script>
+				$(document).ready(function(){
+					
+					//bold on first li in each ul
+					$('ul li:nth-child(1)').css('font-weight','bold');
+					//toggle to hide when clicked on
+					$("dt, h3").click(function(){
+					
+						$(this).next().toggle(".invisible");
+					});
+					
+				});
+			</script>
+	</body>
+</html>

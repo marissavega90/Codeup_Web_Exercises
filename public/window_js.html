@@ -9,6 +9,7 @@
 
     <script>
 
+        var delay = 5000;
         var timeoutId;
 
         function save() {
@@ -36,5 +37,16 @@
         textarea.addEventListener('keyup', autosave, false);
 
     </script>
+
+    <script src="/js/jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+         $('#important').on('keyup', function(){
+            autosave();
+        })
+         
+    </script>
+
 </body>
 </html>

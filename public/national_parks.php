@@ -10,31 +10,58 @@ define('DB_PASS', 'parks_user');
 
 require_once ('../db_connect.php');
 
-
-
-
 // Use $_GET to create pages 1-3, with some math stuff
 // var_dump($_GET['page']);
+$nextprev = $dbc->query("SELECT COUNT(*) FROM national_parks")->fetchColumn();
 
 if(!isset($_GET['page'])) {
 	$page = 1;
-	$offset = 0;
 } else {
 	$page = $_GET['page'];
-	$offset = ($page-1) * 4;
 };
 
+$offset = ($page-1) * 4;
 
-$query = "SELECT name, location, date_established, area_in_acres 
-				FROM national_parks ORDER BY name LIMIT 4 OFFSET " . $offset;
+$query = $dbc->prepare("SELECT name, location, date_established, area_in_acres, description
+				FROM national_parks ORDER BY name LIMIT 4 OFFSET :offset");
 
-$parks = $dbc->query($query)->fetchAll(PDO::FETCH_ASSOC);
+$query->bindValue(':offset', $offset, PDO::PARAM_INT);
 
-$stmt = $dbc->query('SELECT count(*) FROM national_parks')->fetchColumn();
+$query->execute();
 
-$next = $page+1;
+$parks = $query->fetchAll(PDO::FETCH_ASSOC);
 
-$previous = $page-1;
+if (!empty($_POST)) {
+	if 
+		(
+			(empty($_POST['name'])) || 
+			(empty($_POST['location'])) ||
+			(empty($_POST['date_established'])) ||
+			(empty($_POST['area_in_acres'])) ||
+			(empty($_POST['description'])) 
+		) 
+	{
+	    	$errorMsg = 'Must fill out form completely!';
+
+		} else {
+
+		$query = "INSERT INTO national_parks (name, location, date_established, area_in_acres, description)
+			VALUES (:name, :location, :date_established, :area_in_acres, :description)";
+			// VALUES (:email, :name)');
+		$stmt = $dbc->prepare($query);
+
+		$stmt->bindValue(':name', $_POST['name'], PDO::PARAM_STR);
+	    $stmt->bindValue(':location',  $_POST['location'],  PDO::PARAM_STR);
+	    $stmt->bindValue(':date_established',  $_POST['date_established'],  PDO::PARAM_STR);
+	    $stmt->bindValue(':area_in_acres',  $_POST['area_in_acres'],  PDO::PARAM_STR);
+	    $stmt->bindValue(':description',  $_POST['description'],  PDO::PARAM_STR);
+
+	    $stmt->execute();
+
+		}
+}
+
+
 
 ?>
 
@@ -64,6 +91,9 @@ $previous = $page-1;
     		padding-top: 10px; 
     		background-image: url(img/nationalparksbackground2.jpg);
     		background-size: 110%;
+    		background-repeat: no-repeat;
+    		background-attachment: fixed;
+    		padding-bottom: 60px;
 
     	}
 
@@ -97,6 +127,10 @@ $previous = $page-1;
     		color: #1F2229;
     	}
     	
+    	input {
+
+    		color: #DDDDDD;
+    	}
     	
 
 
@@ -119,6 +153,7 @@ $previous = $page-1;
 						<th>Location</th>
 						<th>Date Established</th>
 						<th>Area (in Acres)</th>
+						<th>Description</th>
 					</tr>
 
 						<? foreach ($parks as $key => $park): ?>
@@ -141,13 +176,13 @@ $previous = $page-1;
 
  							<? if ($page > 1 ): ?>
  							
-							    <li class="previous"><a href="?page=<?= $previous ?>"><span aria-hidden="true">&larr;</span> Older</a></li>
+							    <li class="previous"><a href="?page=<?= $page-1 ?>"><span aria-hidden="true">&larr;</span> Older</a></li>
 
 							<? endif; ?>
 
-							<? if ($page <= $stmt/4): ?>
+							<? if ($page <= $nextprev/4): ?>
 
-						    	<li class="next"><a href="?page=<?= $next ?>">Next <span aria-hidden="true">&rarr;</span></a></li>
+						    	<li class="next"><a href="?page=<?= $page+1 ?>">Next <span aria-hidden="true">&rarr;</span></a></li>
 
 							<? endif; ?>
 
@@ -160,6 +195,48 @@ $previous = $page-1;
 					</div>
 				</div>
 		</div>
+<!-- TABLE END! -->
+
+<!-- FORM BEGIN! -->
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-offset-1">
+			<div class="form-group">
+
+				<form name="additem" id="" method="POST" action="national_parks.php">
+					<div class="col-md-5">	 
+						<input type="text" class="form-control" id="name" name="name" placeholder="Name of Park">
+					</div>
+
+					<div class="col-md-5">
+					<input type="text" class="form-control" id="location" name="location" placeholder="Location of Park">
+					</div>
+
+					<div class="col-md-3">
+					<input type="text" class="form-control" id="date_established" name="date_established" placeholder="Established in YYYY-MM-DD">
+					</div>
+
+					<div class="col-md-4">
+					<input type="text" class="form-control" id="area_in_acres" name="area_in_acres" placeholder="Area in Acres (no commas)">
+					</div>
+
+					<div class="col-md-10">
+					<input type="text" class="form-control" id="description" name="description" placeholder="Please include a brief description of the park">
+					</div>
+
+					<div class="col-md-8">
+					<button type="submit" class="btn btn-default2" id="addNew">Submit</button>
+					</div>
+						 
+				</form>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+<!-- FORM END! -->
 
 	   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

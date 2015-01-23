@@ -16,7 +16,7 @@
 		<!--<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>-->
 	</head>
 	<body>
-		<h1>10 Facts about Grand Teton</h1>
+		<h1 id="national-parks-toggle">10 Facts about Grand Teton</h1>
 			<dl>
 
 				<dt>Fact 1</dt>
@@ -31,14 +31,14 @@
 					<dd class="invisible">The Snake River is the largest river in Grand Teton Park.</dd>
 			</dl>
 
-		<h3 >Zion National Park</h3>
+		<h3 id="state-parks-toggle">Zion National Park</h3>
 			<ul class='zion' >
 				<li>Zion is a Hebrew word that means ‘a place of peace and relaxation.'</li>
 				<li>Approximately 2.5 million people visit the park each year.</li>
 				<li>The highest elevation in the park is at Kolob Canyon at 8,726 feet </li>
 				<li>The California Condor, a bird considered one of the most endangered species, can be found in the park.</li>
 			</ul>
-		<h3 >The Grand Canyon</h3>
+		<h3 id="state-parks-toggle">The Grand Canyon</h3>
 			<ul class='grandCanyon'>
 				<li>The Grand Canyon was one of our very first national parks. </li>
 				<li>There aren’t any dinosaur fossils at the Grand Canyon</li>
@@ -48,14 +48,23 @@
 			
 			<script src="/js/jquery.min.js"></script>
 			<script>
+
 				$(document).ready(function(){
-					
-					//bold on first li in each ul
+
+					// $('#national-parks-toggle').click(function() {
+					//         $('#national-parks').slideToggle();
+					//     });
+					//     $('#state-parks-texas-toggle').click(function() {
+					//         $('#state-parks-texas').slideToggle();
+					//     });
+
 					$('ul li:nth-child(1)').css('font-weight','bold');
-					//toggle to hide when clicked on
+
+
 					$("dt, h3").click(function(){
 					
-						$(this).next().toggle(".invisible");
+						$(this).next().slideToggle();
+
 					});
 					
 				});
